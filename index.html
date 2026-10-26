@@ -19,6 +19,7 @@ html,body{min-height:100%;overflow-x:hidden}.workspace{width:100%;min-height:100
 .control-panel button:disabled{opacity:.4;cursor:default}
 .ai-context{font-size:12px;line-height:1.5;color:#b5bdc9;border-bottom:1px solid #ffffff17;padding:1px 0 10px;margin-bottom:10px;white-space:pre-line}.ai-context[hidden]{display:none}
 .recording-stage[data-bg="day-office"]{background:linear-gradient(90deg,#1119234a,#11192372),url("assets/office-day.png") center/cover no-repeat}.recording-stage[data-bg="night-office"]{background:linear-gradient(90deg,#0d111c55,#0d111c78),url("assets/office-night.png") center/cover no-repeat}
+.recording-stage[data-bg="home-room"]{background:linear-gradient(90deg,#15161b40,#15161b73),url("assets/home-room.jpg") center/cover no-repeat}
 </style>
 </head>
 <body>
@@ -59,7 +60,7 @@ html,body{min-height:100%;overflow-x:hidden}.workspace{width:100%;min-height:100
     <h3>場景與畫面</h3>
     <label class="dev-select">預覽模式<select id="modeSelect"><option value="portrait">Portrait Preview</option><option value="landscape">Landscape Recording Preview</option></select></label>
     <label class="dev-select">手機位置<select id="layoutSelect"><option value="center">Center Phone</option><option value="right">Right Phone</option></select></label>
-    <label class="dev-select">背景<select id="bgSelect"><option value="dark">Dark</option><option value="office">Office Blur</option><option value="living">Living Room Blur</option><option value="neutral">Neutral Gradient</option><option value="day-office">現代辦公室（白天照片）</option><option value="night-office">深夜辦公室（晚上照片）</option><option value="custom" id="customBgOption" disabled>Uploaded Image</option></select></label>
+    <label class="dev-select">背景<select id="bgSelect"><option value="dark">Dark</option><option value="office">Office Blur</option><option value="living">Living Room Blur</option><option value="neutral">Neutral Gradient</option><option value="day-office">現代辦公室（白天照片）</option><option value="night-office">深夜辦公室（晚上照片）</option><option value="home-room">淑芬家（餐桌照片）</option><option value="custom" id="customBgOption" disabled>Uploaded Image</option></select></label>
     <label class="dev-select">上傳這一幕的背景圖片<input id="bgUpload" type="file" accept="image/*"></label><div class="upload-status" id="uploadStatus">尚未上傳圖片</div><label class="dev-select">圖片模糊程度<input id="bgBlur" type="range" min="0" max="24" value="10"></label><button class="dev-btn" id="clearBgUpload" type="button">移除這一幕的圖片</button>
     <button class="scene-btn" data-scene="first">Scene 1｜第一幕</button>
     <button class="scene-btn" data-scene="birthday">Scene 2｜生日</button>
@@ -79,20 +80,20 @@ const scenes={
  first:{time:'09:18',date:'10月18日（四）',msgs:[
   {side:'theirs',text:'今天有去回診。',meta:'09:17'},
   {side:'mine',text:'',meta:'已讀',ghost:true}
- ],suggestion:'好棒，記得按時吃藥 ❤️',showAI:true},
+ ],suggestion:'好棒，記得按時吃藥 ♡',showAI:true},
  birthday:{time:'08:46',date:'10月25日（四）',msgs:[
-  {side:'mine',text:'媽，生日快樂 ❤️\n我今天忙完就回去。',meta:'08:45',assistant:true}
+  {side:'mine',text:'媽，生日快樂 ♡\n我今天忙完就回去。',meta:'08:45',assistant:true}
  ],suggestion:'',showAI:false},
  apology:{time:'21:36',date:'10月25日（四）',msgs:[],suggestion:'媽，對不起，今天真的走不開，改天一定補給妳。',context:'媽媽今天生日，您尚未回家',showAI:true},
  reject:{time:'22:58',date:'10月25日（四）',msgs:[
   {side:'theirs',text:'沒關係，妳忙。',meta:'21:37'}
- ],suggestion:'媽，蛋糕明天再吃，別放壞了 ❤️',showAI:true},
+ ],suggestion:'媽，蛋糕明天再吃，別放壞了 ♡',showAI:true},
  ending:{time:'08:12',date:'兩週後',msgs:[
   {side:'theirs',text:'今天有去回診。',meta:'08:10'},
   {side:'mine',text:'',meta:'已讀',ghost:true}
  ],suggestion:'',showAI:false},
  dinner:{time:'20:06',date:'10月25日（四）',msgs:[{side:'mine',text:'媽，妳先吃，不用等我。\n我弄完就回去。',meta:'19:48',assistant:true},{side:'theirs',text:'好。',meta:'19:52'}],suggestion:'',showAI:false},
- morning:{time:'08:32',date:'兩週後 · 平日早上',msgs:[],suggestion:'媽早安 ❤️',context:'媽媽今日狀態：一切正常\n連續 9 天正常',showAI:true}
+ morning:{time:'08:32',date:'平日早上',msgs:[],suggestion:'媽早安 ♡',context:'媽媽今日狀態：一切正常\n連續 1 天正常',showAI:true}
  };
 
 let readState=true;
@@ -109,7 +110,7 @@ function renderMsg(m){
 function loadScene(name){
  activeScene=name;const s=scenes[name];const look=sceneAppearance[name];setMode(modeSelect.value,look.layout,look.bg,document.body.classList.contains('record-mode'));document.getElementById('clock').textContent=s.time;
  chat.innerHTML=`<div class="date"><span>${s.date}</span></div>`+s.msgs.map(renderMsg).join('');
- suggestion=s.suggestion;aiText.textContent=suggestion;const aiContext=document.getElementById('aiContext');aiContext.textContent=s.context||'';aiContext.hidden=!s.context;aiCard.classList.toggle('hidden',!s.showAI);aiCard.inert=!s.showAI;aiCard.style.transform='';aiCard.style.opacity='';phoneEl.classList.toggle('has-ai',s.showAI);
+ suggestion=s.suggestion;aiText.textContent=suggestion;const aiContext=document.getElementById('aiContext');aiContext.textContent=s.context||'';aiContext.hidden=!s.context;aiCard.classList.toggle('hidden',!s.showAI);aiCard.inert=!s.showAI;aiCard.style.transform='';aiCard.style.opacity='';aiCard.style.visibility=new URLSearchParams(location.search).get('intro')==='1'&&s.showAI?'hidden':'visible';phoneEl.classList.toggle('has-ai',s.showAI);
  input.value='';sendBtn.disabled=true;chat.scrollTop=0;closeCall();document.getElementById('screenOff').classList.remove('active');
  document.querySelectorAll('.scene-btn').forEach(b=>b.classList.toggle('active',b.dataset.scene===name));
  const u=new URL(location.href);u.searchParams.set('scene',name);history.replaceState(null,'',u);
@@ -134,7 +135,7 @@ const bgUpload=document.getElementById('bgUpload'),bgBlur=document.getElementByI
 function updateUploadedBackground(){const look=sceneAppearance[activeScene];customBgOption.disabled=!look.imageUrl;uploadStatus.textContent=look.imageUrl?`已上傳：${look.imageName}`:'尚未上傳圖片';bgBlur.value=String(look.blur);recordingStage.style.setProperty('--upload-blur',`${look.blur}px`);if(look.bg==='custom'&&look.imageUrl)recordingStage.style.setProperty('--custom-bg',`url("${look.imageUrl}")`);else recordingStage.style.removeProperty('--custom-bg');}
 function fitStage(){if(recordingStage.dataset.mode!=='landscape')return;const h=recordingStage.getBoundingClientRect().height;recordingStage.style.setProperty('--shell-scale',h*.89/868);}
 function setMode(mode,layout,bg,record=false){
- mode=mode==='landscape'?'landscape':'portrait';layout=layout==='right'?'right':'center';bg=['dark','office','living','neutral','day-office','night-office','custom'].includes(bg)?bg:'dark';if(bg==='custom'&&!sceneAppearance[activeScene].imageUrl)bg='dark';
+ mode=mode==='landscape'?'landscape':'portrait';layout=layout==='right'?'right':'center';bg=['dark','office','living','neutral','day-office','night-office','home-room','custom'].includes(bg)?bg:'dark';if(bg==='custom'&&!sceneAppearance[activeScene].imageUrl)bg='dark';
  recordingStage.dataset.mode=mode;recordingStage.dataset.layout=layout;recordingStage.dataset.bg=bg;
  modeSelect.value=mode;layoutSelect.value=layout;bgSelect.value=bg;updateUploadedBackground();
  document.body.classList.toggle('record-mode',record);document.body.dataset.record=record?mode:'';
@@ -217,7 +218,7 @@ aiCard.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return
 function endDrag(e){if(!drag)return;const dismiss=e.type!=='pointercancel'&&e.clientY-drag.y<-48;drag=null;aiCard.classList.remove('dragging');aiCard.style.transform='';aiCard.style.opacity='';if(dismiss)hideAI();}
 aiCard.addEventListener('pointerup',endDrag);aiCard.addEventListener('pointercancel',endDrag);
 aiCard.addEventListener('click',e=>{if(suppressClick){e.stopImmediatePropagation();e.preventDefault();suppressClick=false;}},true);
-const params=new URLSearchParams(location.search);const initialScene=Object.hasOwn(scenes,params.get('scene'))?params.get('scene'):'first';sceneAppearance[initialScene]={...sceneAppearance[initialScene],layout:params.get('layout')==='right'?'right':'center',bg:['dark','office','living','neutral','day-office','night-office'].includes(params.get('bg'))?params.get('bg'):sceneAppearance[initialScene].bg};setMode(params.get('record')==='landscape'?'landscape':'portrait',sceneAppearance[initialScene].layout,sceneAppearance[initialScene].bg,['landscape','portrait','1'].includes(params.get('record')));loadScene(initialScene);
+const params=new URLSearchParams(location.search);const initialScene=Object.hasOwn(scenes,params.get('scene'))?params.get('scene'):'first';sceneAppearance[initialScene]={...sceneAppearance[initialScene],layout:params.get('layout')==='right'?'right':'center',bg:['dark','office','living','neutral','day-office','night-office','home-room'].includes(params.get('bg'))?params.get('bg'):sceneAppearance[initialScene].bg};setMode(params.get('record')==='landscape'?'landscape':'portrait',sceneAppearance[initialScene].layout,sceneAppearance[initialScene].bg,['landscape','portrait','1'].includes(params.get('record')));loadScene(initialScene);
 </script></body></html>
 
 
