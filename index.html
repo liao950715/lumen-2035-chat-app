@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lumen｜雅婷與媽媽</title>
+<style>
+:root{--chat:#24262e;--text:#f0f1f3;--muted:#9297a2;--mine:#c4e6a6;--theirs:#353841}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;color:var(--text);background:#181a20}button,textarea{font:inherit}button{cursor:pointer}button:focus-visible,textarea:focus-visible{outline:2px solid #aab6d2;outline-offset:3px}button{color:inherit}button svg{width:22px;height:22px;display:block} .stage{min-height:100%;display:flex;align-items:center;justify-content:center;gap:48px;padding:20px}.phone{width:390px;height:844px;max-height:calc(100dvh - 40px);position:relative;overflow:hidden;background:var(--chat);flex:none;display:flex;flex-direction:column;border-radius:24px}.statusbar{height:38px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 23px;font-size:12px;font-weight:600}.status-icons{display:flex;align-items:center;gap:7px}.status-icons svg{width:17px;height:14px}.topbar{height:70px;flex:none;display:grid;grid-template-columns:80px 1fr 80px;align-items:center;padding:0 12px;border-bottom:1px solid #ffffff09}.topbar button{border:0;background:none;padding:10px;min-height:44px}.topbar>button{justify-self:start}.title{text-align:center}.title strong{font-size:18px;font-weight:600}.title small{display:block;font-size:11px;letter-spacing:.06em;color:var(--muted);margin-top:5px}.actions{display:flex;justify-content:flex-end}.actions button{padding:8px}.chat{flex:1;min-height:0;overflow:auto;padding:10px 18px 24px;scrollbar-width:none}.chat::-webkit-scrollbar{display:none}.phone.has-ai .chat{padding-bottom:192px}.date{display:flex;justify-content:center;margin:12px 0 30px}.date span{font-size:11px;color:#acafb8;background:#34373f;padding:5px 13px;border-radius:20px}.row{display:flex;align-items:flex-end;margin:18px 0;gap:8px}.row.mine{justify-content:flex-end}.row.theirs{justify-content:flex-start}.bubble{font-size:16px;line-height:1.65;padding:11px 15px;border-radius:19px;white-space:pre-wrap;overflow-wrap:anywhere;max-width:270px}.mine .bubble{color:#29322a;background:var(--mine);border-bottom-right-radius:9px}.theirs .bubble{background:var(--theirs);border-bottom-left-radius:9px}.message-content{min-width:0;max-width:78%}.meta{font-size:11px;line-height:1.5;color:var(--muted);flex:none;display:flex;flex-direction:column;align-items:flex-start;padding-bottom:2px}.mine .meta{text-align:right;align-items:flex-end}.assistant-mark{font-size:9px;color:#898e99;text-align:right;margin-top:5px;font-weight:400}.receipt{font-size:11px;color:var(--muted);margin:5px 0 0 15px}.composer{flex:none;min-height:83px;display:flex;align-items:flex-start;gap:9px;padding:12px 14px 27px;background:var(--chat);position:relative;z-index:8}.composer:after{content:'';position:absolute;bottom:8px;left:calc(50% - 52px);width:104px;height:4px;background:#d0d2d8;border-radius:4px}.plus{border:0;background:none;font-size:27px;width:28px;height:42px;padding:0;color:#a9aeb8}.input{flex:1;min-width:0;height:42px;max-height:84px;resize:none;border:0;border-radius:20px;background:#343740;color:var(--text);padding:11px 14px;font-size:15px;line-height:20px}.input::placeholder{color:#9095a0}.send{border:0;border-radius:15px;height:42px;padding:0 13px;background:var(--mine);color:#29322a;font-size:13px;font-weight:600}.send:disabled{opacity:.32;cursor:default}.ai-card{position:absolute;left:14px;right:14px;bottom:94px;background:#303540;border:1px solid #ffffff0b;border-radius:19px;padding:14px 16px 12px;z-index:10;touch-action:none;transition:transform .22s ease,opacity .22s ease}.ai-card.hidden{transform:translateY(-70px);opacity:0;pointer-events:none;visibility:hidden;transition:transform .22s ease,opacity .22s ease,visibility 0s .22s}.ai-card.dragging{transition:none}.ai-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.ai-label{display:flex;gap:7px;align-items:center;font-size:11px;color:#b0b8cb}.ai-label svg{width:15px;height:15px}.ai-hint{font-size:10px;color:#838b9c}.ai-text{font-size:15px;line-height:1.65;color:#e1e4eb;white-space:pre-wrap;margin-bottom:14px}.ai-buttons{display:flex;justify-content:flex-end;gap:10px}.ai-buttons button{border:0;border-radius:11px;height:33px;padding:0 19px;font-size:12px}.ai-skip{background:none;color:#aeb5c5}.ai-send{background:#7885a0;color:#fff}.toast{display:none}.call{position:absolute;inset:0;background:var(--chat);z-index:30;display:none;flex-direction:column;align-items:center;padding-top:170px}.call.active{display:flex}.circle{width:100px;height:100px;border-radius:50%;background:#363b45;color:#bfc5cf;display:grid;place-items:center;font-size:30px;margin-bottom:25px}.call h2{font-size:25px;margin:0 0 8px;font-weight:500}.call p{font-size:13px;color:var(--muted);margin:5px}.call .call-status{margin-top:28px}.call-controls{margin-top:auto;margin-bottom:80px;text-align:center}.call-btn{width:64px;height:64px;border-radius:50%;border:0;background:#9b5259;display:grid;place-items:center;margin-bottom:12px}.call-controls small{color:#a8adb7;font-size:12px}.control-panel{width:280px;color:#c7cbd5}.control-panel h3{font-size:16px;font-weight:500;margin:0 0 20px}.scene-btn,.dev-btn{width:100%;text-align:left;border:1px solid #363b46;background:transparent;color:#b3b9c5;border-radius:9px;padding:12px;margin:4px 0;font-size:12px}.scene-btn.active{background:#30353d;color:#e8ecdf;border-color:#64725d}.note{font-size:12px;line-height:1.8;color:#858d9c;margin:16px 0}.dev-label{display:flex;gap:8px;font-size:12px;margin:18px 0}.recording .control-panel{display:none}.recording .stage{padding:0}.recording .phone{border-radius:0;max-height:100dvh}.screen-off{position:absolute;inset:0;background:#101114;z-index:60;border:0;width:100%;height:100%;display:none}.screen-off.active{display:block}
+@media(max-width:760px){.stage{padding:0;min-height:100dvh}.phone{width:100vw;height:100dvh;max-height:none;border-radius:0}.control-panel{display:none}}@media(prefers-reduced-motion:reduce){.ai-card{transition:none!important}}
+
+/* The recording canvas owns composition; the chat keeps its 390 × 844 layout. */
+html,body{min-height:100%;overflow-x:hidden}.workspace{width:100%;min-height:100dvh;display:flex;align-items:center;justify-content:center;gap:32px;padding:24px}.recording-stage{position:relative;width:auto;height:auto;display:flex;align-items:center;justify-content:center;isolation:isolate;overflow:hidden}.recording-stage::before,.recording-stage::after{content:"";position:absolute;inset:0;pointer-events:none}.phone-shell{position:relative;width:390px;height:844px;flex:none;z-index:2}.phone-shell .phone{width:390px;height:844px;max-height:none}.recording-stage[data-mode="landscape"]{width:min(calc(100vw - 350px),calc((100dvh - 48px)*16/9));aspect-ratio:16/9;background:#25272d}.recording-stage[data-mode="landscape"] .phone-shell{position:absolute;left:var(--phone-x,50%);top:50%;width:414px;height:868px;padding:12px;transform:translate(-50%,-50%) scale(var(--shell-scale,1));transform-origin:center;background:linear-gradient(145deg,#3b3e45,#111216 54%,#30333a);border-radius:47px;border:1px solid #6b6e72;box-shadow:0 18px 50px #0008,0 0 0 2px #15171b inset}.recording-stage[data-mode="landscape"] .phone-shell::before{content:"";position:absolute;top:17px;left:50%;transform:translateX(-50%);width:80px;height:17px;border-radius:20px;background:#111216;z-index:15;pointer-events:none}.recording-stage[data-mode="landscape"] .phone-shell::after{content:"";position:absolute;left:-3px;top:140px;width:2px;height:62px;border-radius:2px;background:#777b81;pointer-events:none}.recording-stage[data-mode="landscape"] .phone{border-radius:34px}.recording-stage[data-layout="right"]{--phone-x:67%}.recording-stage[data-bg="dark"]{background:linear-gradient(132deg,#2c2e33,#1c1e23 70%,#292a2e)}.recording-stage[data-bg="office"]{background:linear-gradient(90deg,#33383b99,#2a2d32ba),radial-gradient(ellipse at 18% 72%,#b9b2a0 0 8%,transparent 25%),linear-gradient(90deg,#515a58 0 13%,#bbc3bc 13% 17%,#414e53 17% 42%,#a8b3ad 42% 47%,#505e61 47% 69%,#a9aaa1 69% 74%,#384246 74%);background-size:cover}.recording-stage[data-bg="office"]::before{inset:-12%;background:radial-gradient(ellipse at 31% 90%,#222a2a 0 15%,transparent 40%),linear-gradient(0deg,#303334 0 20%,transparent 48%);filter:blur(42px)}.recording-stage[data-bg="living"]{background:linear-gradient(90deg,#4b4039bb,#433a36b8),radial-gradient(ellipse at 28% 18%,#c9aa86 0 15%,transparent 42%),linear-gradient(130deg,#917966,#5e514b 45%,#3d3b39)}.recording-stage[data-bg="living"]::before{inset:-12%;background:radial-gradient(ellipse at 20% 83%,#463b37 0 20%,transparent 43%),radial-gradient(ellipse at 64% 64%,#a17d5e 0 12%,transparent 32%);filter:blur(38px)}.recording-stage[data-bg="neutral"]{background:linear-gradient(145deg,#71737a,#50545c 55%,#30343b)}.recording-stage[data-mode="portrait"]{width:390px;height:844px}.recording-stage[data-mode="portrait"] .phone-shell,.recording-stage[data-mode="portrait"] .phone{border-radius:0}.record-mode .control-panel{display:none}.record-mode .workspace{padding:0}.record-mode .recording-stage[data-mode="landscape"]{width:min(100vw,calc(100dvh*16/9))}.record-mode .recording-stage[data-mode="portrait"]{width:390px;height:844px}.record-mode[data-record="portrait"] .recording-stage[data-mode="portrait"]{width:390px;height:844px}.record-mode[data-record="portrait"] .phone{width:390px;height:844px}.control-panel{max-height:calc(100dvh - 48px);overflow:auto;flex:none}.dev-select{display:block;font-size:12px;color:#aeb5c3;margin:14px 0}.dev-select select,.dev-select input{width:100%;margin-top:7px;background:#30343c;color:#e8ebf0;border:1px solid #454b56;border-radius:8px;padding:8px}.dev-details{margin:12px 0;color:#9199a8;font-size:12px}.dev-details summary{cursor:pointer}.call{padding-top:0}.call-back{align-self:flex-start;margin:28px 0 0 18px;border:0;background:none;display:flex;align-items:center;gap:3px;color:#bbc0ca;font-size:13px;padding:8px}.call-back svg{width:19px;height:19px}.call-person{margin-top:112px;display:flex;flex-direction:column;align-items:center}.call h2{margin-top:0}.call .call-status{margin-top:18px;font-variant-numeric:tabular-nums}.call-controls{margin-bottom:76px}.call-btn svg{transform:rotate(135deg)}
+@media(max-width:760px){.workspace{padding:0}.recording-stage[data-mode="portrait"]{width:100vw;height:100dvh}.recording-stage[data-mode="portrait"] .phone-shell,.recording-stage[data-mode="portrait"] .phone{width:100vw;height:100dvh}.record-mode[data-record="portrait"] .recording-stage[data-mode="portrait"],.record-mode[data-record="portrait"] .phone-shell,.record-mode[data-record="portrait"] .phone{width:100vw;height:100dvh}.control-panel{display:none}}
+.recording-stage[data-bg="office"]{background:linear-gradient(135deg,#434c4e,#262e32)}.recording-stage[data-bg="office"]::before{inset:-12%;background:linear-gradient(0deg,#202727 0 24%,transparent 60%),linear-gradient(90deg,#5f6b68 0 18%,#bdc5bc 18% 22%,#4c5b5e 22% 43%,#aebbb4 43% 48%,#536265 48% 70%,#a8ada5 70% 76%,#455155 76%);filter:blur(38px)}.recording-stage[data-bg="living"]{background:linear-gradient(135deg,#6b5b50,#34302e)}.recording-stage[data-bg="living"]::before{inset:-12%;background:radial-gradient(ellipse at 28% 22%,#d7b58c 0 15%,transparent 42%),radial-gradient(ellipse at 27% 88%,#3c302c 0 23%,transparent 47%),linear-gradient(115deg,#9b7960,#4b403d);filter:blur(40px)}
+.control-panel,.record-mode .control-panel{display:none}.control-panel.open,.record-mode .control-panel.open{display:block;position:fixed;right:18px;top:18px;bottom:18px;width:min(330px,calc(100vw - 36px));max-height:none;z-index:100;background:#242830;border:1px solid #4c5360;border-radius:16px;box-shadow:0 18px 70px #000a;padding:18px;overflow:auto}.workspace{gap:0}.recording-stage[data-mode="landscape"]{width:min(calc(100vw - 48px),calc((100dvh - 48px)*16/9))}.record-mode .recording-stage[data-mode="landscape"]{width:min(100vw,calc(100dvh*16/9))}.panel-head{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:#e3e8ee;margin-bottom:16px}.panel-head button{background:#383e48;border:0;border-radius:8px;width:28px;height:28px;font-size:20px;line-height:1}.control-panel h3{font-size:12px;color:#aab2c0;margin:15px 0 8px}.control-panel .dev-details .dev-btn{margin-top:8px}
+.recording-stage[data-bg="custom"]{background:#292b31}.recording-stage[data-bg="custom"]::before{inset:-36px;background-image:linear-gradient(#16191b38,#16191b38),var(--custom-bg);background-size:cover;background-position:center;filter:blur(var(--upload-blur,10px))}.upload-status{font-size:11px;color:#8f98a7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:-8px}.dev-select input[type="file"]{font-size:11px;padding:7px}.dev-select input[type="file"]::file-selector-button{background:#515b69;color:#fff;border:0;border-radius:6px;padding:7px;margin-right:8px}.dev-select input[type="range"]{padding:0;accent-color:#9eb4a0}
+.capture-btn{background:#394d48!important;color:#d9eee3!important;border-color:#5a786a!important;text-align:center!important;font-weight:600}.capture-btn:disabled{opacity:.55}.capture-note{font-size:11px;line-height:1.55;color:#9daab7;margin:5px 0 12px}
+.control-panel button:disabled{opacity:.4;cursor:default}
+.ai-context{font-size:12px;line-height:1.5;color:#b5bdc9;border-bottom:1px solid #ffffff17;padding:1px 0 10px;margin-bottom:10px;white-space:pre-line}.ai-context[hidden]{display:none}
+.recording-stage[data-bg="day-office"]{background:linear-gradient(90deg,#1119234a,#11192372),url("assets/office-day.png") center/cover no-repeat}.recording-stage[data-bg="night-office"]{background:linear-gradient(90deg,#0d111c55,#0d111c78),url("assets/office-night.png") center/cover no-repeat}
+</style>
+</head>
+<body>
+<div class="workspace">
+  <main class="recording-stage" id="recordingStage" data-mode="portrait" data-layout="center" data-bg="dark" aria-label="錄影預覽畫布">
+  <div class="phone-shell" id="phoneShell">
+  <div class="phone" id="phone">
+    <div class="statusbar"><span id="clock">23:41</span><span class="status-icons" aria-label="訊號良好，電量充足"><svg viewBox="0 0 20 16" fill="currentColor"><rect x="1" y="10" width="3" height="5" rx="1"/><rect x="6" y="7" width="3" height="8" rx="1"/><rect x="11" y="4" width="3" height="11" rx="1"/><rect x="16" y="1" width="3" height="14" rx="1"/></svg><svg viewBox="0 0 24 14" fill="none" stroke="currentColor"><rect x="1" y="1" width="19" height="12" rx="3"/><path d="M23 5v4"/><rect x="3" y="3" width="15" height="8" rx="1" fill="currentColor"/></svg></span></div>
+    <div class="topbar">
+      <button id="backBtn" aria-label="關閉手機畫面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m14 5-7 7 7 7"/></svg></button>
+      <div class="title"><strong>媽媽</strong><small>林淑芬</small></div>
+      <div class="actions"><button id="callBtn" aria-label="撥打電話"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3H4c-1 0-2 1-1 4 2 7 7 12 14 14 3 1 4 0 4-1v-3l-5-2-2 2c-3-1-6-4-7-7l2-2Z"/></svg></button><button id="moreBtn" aria-label="更多選項"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="ai-card" id="aiCard">
+      <div class="ai-head"><span class="ai-label"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M10 2c1 5 3 7 8 8-5 1-7 3-8 8-1-5-3-7-8-8 5-1 7-3 8-8Z"/></svg>AI 助理建議</span><span class="ai-hint">上滑略過</span></div>
+      <div class="ai-context" id="aiContext" hidden></div><div class="ai-text" id="aiText"></div>
+      <div class="ai-buttons"><button class="ai-skip" id="aiSkip">略過</button><button class="ai-send" id="aiSend">送出</button></div>
+    </div>
+    <div class="composer">
+      <button class="plus" id="plusBtn" aria-label="新增內容">＋</button>
+      <textarea class="input" id="input" aria-label="輸入訊息" rows="1" placeholder="輸入訊息"></textarea>
+      <button class="send" id="sendBtn" disabled>送出</button>
+    </div>
+    <div class="toast" id="toast"></div>
+    <div class="call" id="callScreen">
+      <button class="call-back" id="callBack" aria-label="返回聊天"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m14 5-7 7 7 7"/></svg>返回聊天</button>
+      <div class="call-person"><div class="circle">媽</div><h2>媽❤️</h2><p>林淑芬</p><p class="call-status" id="callStatus">正在撥號…</p></div>
+<div class="call-controls"><button class="call-btn hang" id="hangBtn" aria-label="掛斷"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3H4c-1 0-2 1-1 4 2 7 7 12 14 14 3 1 4 0 4-1v-3l-5-2-2 2c-3-1-6-4-7-7l2-2Z"/></svg></button><small>掛斷</small></div>
+    </div>
+    <button class="screen-off" id="screenOff" aria-label="喚醒手機"></button>
+  </div>
+
+  </div>
+  </main>
+  <aside class="control-panel" id="controlPanel" aria-label="拍攝控制台" aria-hidden="true">
+    <div class="panel-head"><span>拍攝控制台</span><button id="closePanel" type="button" aria-label="隱藏控制台">×</button></div>
+    <h3>場景與畫面</h3>
+    <label class="dev-select">預覽模式<select id="modeSelect"><option value="portrait">Portrait Preview</option><option value="landscape">Landscape Recording Preview</option></select></label>
+    <label class="dev-select">手機位置<select id="layoutSelect"><option value="center">Center Phone</option><option value="right">Right Phone</option></select></label>
+    <label class="dev-select">背景<select id="bgSelect"><option value="dark">Dark</option><option value="office">Office Blur</option><option value="living">Living Room Blur</option><option value="neutral">Neutral Gradient</option><option value="day-office">現代辦公室（白天照片）</option><option value="night-office">深夜辦公室（晚上照片）</option><option value="custom" id="customBgOption" disabled>Uploaded Image</option></select></label>
+    <label class="dev-select">上傳這一幕的背景圖片<input id="bgUpload" type="file" accept="image/*"></label><div class="upload-status" id="uploadStatus">尚未上傳圖片</div><label class="dev-select">圖片模糊程度<input id="bgBlur" type="range" min="0" max="24" value="10"></label><button class="dev-btn" id="clearBgUpload" type="button">移除這一幕的圖片</button>
+    <button class="scene-btn" data-scene="first">Scene 1｜第一幕</button>
+    <button class="scene-btn" data-scene="birthday">Scene 2｜生日</button>
+    <button class="scene-btn" data-scene="apology">Scene 3｜AI 代寫道歉</button>
+    <button class="scene-btn" data-scene="reject">Scene 4｜拒絕 AI</button>
+    <button class="scene-btn" data-scene="ending">Scene 5｜結尾</button><button class="scene-btn" data-scene="dinner">第四幕｜妳先吃</button><button class="scene-btn" data-scene="morning">尾聲｜媽早安建議</button>
+<label class="dev-label"><input id="readToggle" type="checkbox" checked>顯示已讀</label><button class="dev-btn" id="resetBtn">重設本幕</button><button class="dev-btn" id="recordBtn">以目前構圖進入錄影模式 · R</button><button class="dev-btn" id="folderBtn" type="button">選擇「下載」資料夾</button><button class="dev-btn capture-btn" id="captureBtn" type="button">截取目前畫布 PNG</button><button class="dev-btn capture-btn" id="startVideoBtn" type="button">開始錄製 MP4</button><button class="dev-btn" id="stopVideoBtn" type="button" disabled>停止並儲存影片</button><div class="capture-note" id="captureNote" role="status">先選擇「下載」資料夾；程式會在其中建立「後置畫面」。截圖時請選擇「目前分頁」。</div><button class="dev-btn" id="offBtn">切換手機黑屏 · B</button><label class="dev-select">通話起始秒數<input id="callStart" type="number" min="0" max="359999" value="0"></label><button class="dev-btn" id="resetCallBtn" type="button">重置電話秒數為 00:00</button><div class="note">每次只呈現一幕，不累積其他場景。<br>Tab 開啟控制台，Esc 隱藏；V 開始／停止錄製，B 切換手機黑屏；數字 1–5 切換場景。<br>結尾請親自輸入「好，晚上打給妳。」<br>返回箭頭可關閉畫面，點畫面喚醒。</div>
+  </aside>
+</div>
+<script>
+const chat=document.getElementById('chat'), aiCard=document.getElementById('aiCard'), aiText=document.getElementById('aiText'), aiSend=document.getElementById('aiSend');
+const input=document.getElementById('input'), sendBtn=document.getElementById('sendBtn'), toast=document.getElementById('toast');
+const callBtn=document.getElementById('callBtn'), callScreen=document.getElementById('callScreen'), hangBtn=document.getElementById('hangBtn');
+let activeScene='first', suggestion='';
+
+const scenes={
+ first:{time:'09:18',date:'10月18日（四）',msgs:[
+  {side:'theirs',text:'今天有去回診。',meta:'09:17'},
+  {side:'mine',text:'',meta:'已讀',ghost:true}
+ ],suggestion:'好棒，記得按時吃藥 ❤️',showAI:true},
+ birthday:{time:'08:46',date:'10月25日（四）',msgs:[
+  {side:'mine',text:'媽，生日快樂 ❤️\n我今天忙完就回去。',meta:'08:45',assistant:true}
+ ],suggestion:'',showAI:false},
+ apology:{time:'21:36',date:'10月25日（四）',msgs:[],suggestion:'媽，對不起，今天真的走不開，改天一定補給妳。',context:'媽媽今天生日，您尚未回家',showAI:true},
+ reject:{time:'22:58',date:'10月25日（四）',msgs:[
+  {side:'theirs',text:'沒關係，妳忙。',meta:'21:37'}
+ ],suggestion:'媽，蛋糕明天再吃，別放壞了 ❤️',showAI:true},
+ ending:{time:'08:12',date:'兩週後',msgs:[
+  {side:'theirs',text:'今天有去回診。',meta:'08:10'},
+  {side:'mine',text:'',meta:'已讀',ghost:true}
+ ],suggestion:'',showAI:false},
+ dinner:{time:'20:06',date:'10月25日（四）',msgs:[{side:'mine',text:'媽，妳先吃，不用等我。\n我弄完就回去。',meta:'19:48',assistant:true},{side:'theirs',text:'好。',meta:'19:52'}],suggestion:'',showAI:false},
+ morning:{time:'08:32',date:'兩週後 · 平日早上',msgs:[],suggestion:'媽早安 ❤️',context:'媽媽今日狀態：一切正常\n連續 9 天正常',showAI:true}
+ };
+
+let readState=true;
+const phoneEl=document.getElementById('phone');
+const sceneAppearance=Object.fromEntries(Object.keys(scenes).map(name=>[name,{bg:['dinner','apology','reject'].includes(name)?'night-office':'day-office',layout:'center',imageUrl:null,imageName:'',blur:10}]));
+function escapeText(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderMsg(m){
+ if(m.ghost)return '';
+ const mine=m.side==='mine';
+ const meta=`<div class="meta">${mine?'<span class="read-state">'+(readState?'已讀':'已送出')+'</span>':''}<span>${escapeText(m.meta||'')}</span></div>`;
+ const content=`<div class="message-content"><div class="bubble">${escapeText(m.text)}</div>${m.assistant?'<div class="assistant-mark">由助理建議</div>':''}${!mine?'<div class="receipt read-state">'+(readState?'已讀':'未讀')+'</div>':''}</div>`;
+ return `<div class="row ${m.side}">${mine?meta+content:content+meta}</div>`;
+}
+function loadScene(name){
+ activeScene=name;const s=scenes[name];const look=sceneAppearance[name];setMode(modeSelect.value,look.layout,look.bg,document.body.classList.contains('record-mode'));document.getElementById('clock').textContent=s.time;
+ chat.innerHTML=`<div class="date"><span>${s.date}</span></div>`+s.msgs.map(renderMsg).join('');
+ suggestion=s.suggestion;aiText.textContent=suggestion;const aiContext=document.getElementById('aiContext');aiContext.textContent=s.context||'';aiContext.hidden=!s.context;aiCard.classList.toggle('hidden',!s.showAI);aiCard.inert=!s.showAI;aiCard.style.transform='';aiCard.style.opacity='';phoneEl.classList.toggle('has-ai',s.showAI);
+ input.value='';sendBtn.disabled=true;chat.scrollTop=0;closeCall();document.getElementById('screenOff').classList.remove('active');
+ document.querySelectorAll('.scene-btn').forEach(b=>b.classList.toggle('active',b.dataset.scene===name));
+ const u=new URL(location.href);u.searchParams.set('scene',name);history.replaceState(null,'',u);
+}
+function addMessage(text,assistant=false){chat.insertAdjacentHTML('beforeend',renderMsg({side:'mine',text,meta:scenes[activeScene].time,assistant}));chat.scrollTop=chat.scrollHeight;}
+function hideAI(){aiCard.style.transform='';aiCard.style.opacity='';aiCard.classList.add('hidden');aiCard.inert=true;phoneEl.classList.remove('has-ai');}
+aiSend.addEventListener('click',()=>{if(!suggestion||aiCard.classList.contains('hidden'))return;const wasApology=activeScene==='apology';addMessage(wasApology?'媽，對不起。\n今天真的走不開。\n改天一定補給妳。':suggestion,true);hideAI();if(wasApology)setTimeout(()=>{if(activeScene==='apology'){chat.insertAdjacentHTML('beforeend',renderMsg({side:'theirs',text:'沒關係，妳忙。',meta:'21:38'}));chat.scrollTop=chat.scrollHeight;}},850);});
+document.getElementById('aiSkip').onclick=hideAI;
+input.addEventListener('input',()=>sendBtn.disabled=!input.value.trim());
+sendBtn.addEventListener('click',()=>{const t=input.value.trim();if(!t)return;addMessage(t);input.value='';sendBtn.disabled=true;hideAI();});
+let callTimer=null,callDelay=null,callSeconds=0;
+function formatCallTime(n){return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;}
+function closeCall(){clearTimeout(callDelay);clearInterval(callTimer);callDelay=null;callTimer=null;callScreen.classList.remove('active');}
+callBtn.onclick=()=>{closeCall();callSeconds=Math.max(0,Math.min(359999,Number(document.getElementById('callStart').value)||0));const status=document.getElementById('callStatus');status.textContent='正在撥號…';callScreen.classList.add('active');callDelay=setTimeout(()=>{status.textContent=`通話中 · ${formatCallTime(callSeconds)}`;callTimer=setInterval(()=>{status.textContent=`通話中 · ${formatCallTime(++callSeconds)}`;},1000);},2000);document.getElementById('callBack').focus();};
+hangBtn.onclick=()=>{closeCall();callBtn.focus();};document.getElementById('callBack').onclick=()=>{closeCall();callBtn.focus();};
+document.querySelectorAll('.scene-btn').forEach(b=>b.onclick=()=>loadScene(b.dataset.scene));
+document.getElementById('readToggle').onchange=e=>{readState=e.target.checked;document.querySelectorAll('.read-state').forEach(el=>el.textContent=readState?'已讀':el.classList.contains('receipt')?'未讀':'已送出');};
+document.getElementById('resetBtn').onclick=()=>loadScene(activeScene);
+const recordingStage=document.getElementById('recordingStage');
+const modeSelect=document.getElementById('modeSelect'),layoutSelect=document.getElementById('layoutSelect'),bgSelect=document.getElementById('bgSelect');
+const bgUpload=document.getElementById('bgUpload'),bgBlur=document.getElementById('bgBlur'),uploadStatus=document.getElementById('uploadStatus'),customBgOption=document.getElementById('customBgOption');
+function updateUploadedBackground(){const look=sceneAppearance[activeScene];customBgOption.disabled=!look.imageUrl;uploadStatus.textContent=look.imageUrl?`已上傳：${look.imageName}`:'尚未上傳圖片';bgBlur.value=String(look.blur);recordingStage.style.setProperty('--upload-blur',`${look.blur}px`);if(look.bg==='custom'&&look.imageUrl)recordingStage.style.setProperty('--custom-bg',`url("${look.imageUrl}")`);else recordingStage.style.removeProperty('--custom-bg');}
+function fitStage(){if(recordingStage.dataset.mode!=='landscape')return;const h=recordingStage.getBoundingClientRect().height;recordingStage.style.setProperty('--shell-scale',h*.89/868);}
+function setMode(mode,layout,bg,record=false){
+ mode=mode==='landscape'?'landscape':'portrait';layout=layout==='right'?'right':'center';bg=['dark','office','living','neutral','day-office','night-office','custom'].includes(bg)?bg:'dark';if(bg==='custom'&&!sceneAppearance[activeScene].imageUrl)bg='dark';
+ recordingStage.dataset.mode=mode;recordingStage.dataset.layout=layout;recordingStage.dataset.bg=bg;
+ modeSelect.value=mode;layoutSelect.value=layout;bgSelect.value=bg;updateUploadedBackground();
+ document.body.classList.toggle('record-mode',record);document.body.dataset.record=record?mode:'';
+ const u=new URL(location.href);if(record)u.searchParams.set('record',mode);else u.searchParams.delete('record');
+ u.searchParams.set('layout',layout);u.searchParams.set('bg',bg);history.replaceState(null,'',u);fitStage();
+}
+function recording(){setMode(modeSelect.value,layoutSelect.value,bgSelect.value,!document.body.classList.contains('record-mode'));}
+modeSelect.onchange=()=>setMode(modeSelect.value,layoutSelect.value,bgSelect.value,document.body.classList.contains('record-mode'));
+layoutSelect.onchange=()=>{sceneAppearance[activeScene].layout=layoutSelect.value;setMode(modeSelect.value,layoutSelect.value,bgSelect.value,document.body.classList.contains('record-mode'));};bgSelect.onchange=()=>{sceneAppearance[activeScene].bg=bgSelect.value;setMode(modeSelect.value,layoutSelect.value,bgSelect.value,document.body.classList.contains('record-mode'));};
+bgUpload.onchange=()=>{const file=bgUpload.files?.[0];if(!file)return;if(!file.type.startsWith('image/')){uploadStatus.textContent='請選擇圖片檔';return;}const look=sceneAppearance[activeScene];if(look.imageUrl)URL.revokeObjectURL(look.imageUrl);look.imageUrl=URL.createObjectURL(file);look.imageName=file.name;look.bg='custom';bgUpload.value='';setMode(modeSelect.value,look.layout,'custom',document.body.classList.contains('record-mode'));};
+bgBlur.oninput=()=>{sceneAppearance[activeScene].blur=Number(bgBlur.value);recordingStage.style.setProperty('--upload-blur',`${bgBlur.value}px`);};
+document.getElementById('clearBgUpload').onclick=()=>{const look=sceneAppearance[activeScene];if(look.imageUrl)URL.revokeObjectURL(look.imageUrl);look.imageUrl=null;look.imageName='';if(look.bg==='custom')look.bg='dark';setMode(modeSelect.value,look.layout,look.bg,document.body.classList.contains('record-mode'));};
+window.addEventListener('pagehide',()=>Object.values(sceneAppearance).forEach(look=>{if(look.imageUrl)URL.revokeObjectURL(look.imageUrl);}));
+document.getElementById('recordBtn').onclick=recording;
+document.getElementById('resetCallBtn').onclick=()=>{document.getElementById('callStart').value='0';callSeconds=0;if(callScreen.classList.contains('active')&&document.getElementById('callStatus').textContent.startsWith('通話中'))document.getElementById('callStatus').textContent='通話中 · 00:00';};
+const controlPanel=document.getElementById('controlPanel');function openPanel(){controlPanel.classList.add('open');controlPanel.setAttribute('aria-hidden','false');document.getElementById('closePanel').focus();}function closePanel(){controlPanel.classList.remove('open');controlPanel.setAttribute('aria-hidden','true');document.getElementById('closePanel').blur();}document.getElementById('closePanel').onclick=closePanel;
+let screenshotStream=null,screenshotVideo=null,screenshotFolder=null,captureViewport=null;
+document.getElementById('folderBtn').onclick=async()=>{const note=document.getElementById('captureNote');try{if(!window.showDirectoryPicker)throw new Error('此瀏覽器不支援選擇儲存資料夾，請使用 Edge 或 Chrome。');const parent=await window.showDirectoryPicker({startIn:'downloads',mode:'readwrite'});if(!['downloads','下載','後置畫面'].includes(parent.name.toLocaleLowerCase()))throw new Error('請選擇「下載」資料夾，或直接選擇其中的「後置畫面」。');screenshotFolder=parent.name==='後置畫面'?parent:await parent.getDirectoryHandle('後置畫面',{create:true});note.textContent='儲存位置已設定：下載／後置畫面。截圖將固定裁切畫布。';}catch(error){if(error?.name!=='AbortError')note.textContent=error?.message||'選擇資料夾失敗。';}};
+async function getScreenshotVideo(){
+ if(screenshotStream?.getVideoTracks()[0]?.readyState==='live'&&screenshotVideo?.videoWidth&&captureViewport?.width===innerWidth&&captureViewport?.height===innerHeight)return screenshotVideo;
+ screenshotStream?.getTracks().forEach(track=>track.stop());screenshotStream=null;screenshotVideo=null;
+ if(!navigator.mediaDevices?.getDisplayMedia)throw new Error('這個瀏覽器沒有提供分頁截圖功能。請改用最新版 Edge 或 Chrome。');
+ screenshotStream=await navigator.mediaDevices.getDisplayMedia({video:{displaySurface:'browser'},audio:false,preferCurrentTab:true,selfBrowserSurface:'include'});
+ const track=screenshotStream.getVideoTracks()[0];track.addEventListener('ended',()=>{screenshotStream=null;screenshotVideo=null;},{once:true});
+ if(track.getSettings().displaySurface&&track.getSettings().displaySurface!=='browser'){track.stop();throw new Error('請選擇「目前分頁」，才能精準裁切錄影畫布。');}
+ screenshotVideo=document.createElement('video');screenshotVideo.muted=true;screenshotVideo.playsInline=true;screenshotVideo.srcObject=screenshotStream;captureViewport={width:innerWidth,height:innerHeight};await screenshotVideo.play();
+ if(!screenshotVideo.videoWidth)await new Promise(resolve=>screenshotVideo.addEventListener('loadedmetadata',resolve,{once:true}));
+ return screenshotVideo;
+}
+function nextFrame(){return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));}
+async function captureStage(){
+ const note=document.getElementById('captureNote'),button=document.getElementById('captureBtn');if(!screenshotFolder){note.textContent='請先點「選擇下載資料夾」，再截圖。';return;}button.disabled=true;note.textContent='準備擷取畫布…';
+ try{
+  // The browser permission prompt must begin from this button click.
+  const video=await getScreenshotVideo();closePanel();await nextFrame();await new Promise(resolve=>setTimeout(resolve,180));
+  const rect=recordingStage.getBoundingClientRect();if(rect.left<-.5||rect.top<-.5||rect.right>innerWidth+.5||rect.bottom>innerHeight+.5)throw new Error('畫布未完整顯示。請放大瀏覽器視窗後再截圖。');
+  const videoRatio=video.videoWidth/video.videoHeight,viewportRatio=innerWidth/innerHeight;
+  if(Math.abs(videoRatio/viewportRatio-1)>.035)throw new Error('擷取來源與目前分頁尺寸不同。請重新選擇「目前分頁」。');
+  const landscape=recordingStage.dataset.mode==='landscape',canvas=document.createElement('canvas');canvas.width=landscape?1920:390;canvas.height=landscape?1080:844;
+  const sx=video.videoWidth/innerWidth,sy=video.videoHeight/innerHeight;
+  // Move two CSS pixels inside the canvas edge so antialiasing cannot include outside black.
+  const inset=2,context=canvas.getContext('2d',{alpha:false});context.drawImage(video,(rect.left+inset)*sx,(rect.top+inset)*sy,(rect.width-inset*2)*sx,(rect.height-inset*2)*sy,0,0,canvas.width,canvas.height);
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw new Error('圖片輸出失敗，請再試一次。');
+  const filename=`Lumen-${activeScene}-${landscape?'1920x1080':'390x844'}-${new Date().toISOString().replace(/[:.]/g,'-')}.png`;const file=await screenshotFolder.getFileHandle(filename,{create:true});const writer=await file.createWritable();await writer.write(blob);await writer.close();
+  note.textContent=`已存到下載／後置畫面：${filename}`;
+ }catch(error){openPanel();note.textContent=error?.message||'截圖失敗，請重試。';}
+ finally{button.disabled=false;}
+}
+document.getElementById('captureBtn').onclick=captureStage;
+let videoRecorder=null,recordCanvas=null,recordCanvasStream=null,recordFrame=0,recordChunks=[],recordMime='';
+function recorderMime(){if(MediaRecorder.isTypeSupported('video/mp4;codecs=avc1.42E01E'))return 'video/mp4;codecs=avc1.42E01E';if(MediaRecorder.isTypeSupported('video/mp4'))return 'video/mp4';if(MediaRecorder.isTypeSupported('video/webm;codecs=vp9'))return 'video/webm;codecs=vp9';if(MediaRecorder.isTypeSupported('video/webm'))return 'video/webm';return '';}
+function setVideoButtons(active){document.getElementById('startVideoBtn').disabled=active;document.getElementById('stopVideoBtn').disabled=!active;}
+function renderRecordFrame(){if(!videoRecorder||videoRecorder.state!=='recording')return;
+ if(!controlPanel.classList.contains('open')&&screenshotVideo?.videoWidth){const rect=recordingStage.getBoundingClientRect(),sx=screenshotVideo.videoWidth/innerWidth,sy=screenshotVideo.videoHeight/innerHeight,inset=2;recordCanvas.getContext('2d',{alpha:false}).drawImage(screenshotVideo,(rect.left+inset)*sx,(rect.top+inset)*sy,(rect.width-inset*2)*sx,(rect.height-inset*2)*sy,0,0,recordCanvas.width,recordCanvas.height);}
+ recordFrame=requestAnimationFrame(renderRecordFrame);
+}
+async function startVideoRecording(){const note=document.getElementById('captureNote');if(videoRecorder?.state==='recording')return;if(!screenshotFolder){openPanel();note.textContent='請先選擇「下載」資料夾。';return;}if(typeof MediaRecorder==='undefined'){openPanel();note.textContent='這個瀏覽器不支援錄製影片。';return;}recordMime=recorderMime();if(!recordMime){openPanel();note.textContent='這個瀏覽器沒有可用的影片格式。';return;}
+ try{const video=await getScreenshotVideo();const rect=recordingStage.getBoundingClientRect(),ratio=video.videoWidth/video.videoHeight;if(Math.abs(ratio/(innerWidth/innerHeight)-1)>.035)throw new Error('請選擇「目前分頁」，才能只錄畫布。');if(rect.left<-.5||rect.top<-.5||rect.right>innerWidth+.5||rect.bottom>innerHeight+.5)throw new Error('畫布未完整顯示。請放大瀏覽器視窗。');
+  recordCanvas=document.createElement('canvas');const landscape=recordingStage.dataset.mode==='landscape';recordCanvas.width=landscape?1920:390;recordCanvas.height=landscape?1080:844;recordCanvasStream=recordCanvas.captureStream(30);recordChunks=[];
+  videoRecorder=new MediaRecorder(recordCanvasStream,{mimeType:recordMime,videoBitsPerSecond:landscape?10000000:4000000});videoRecorder.ondataavailable=e=>{if(e.data?.size)recordChunks.push(e.data);};videoRecorder.onerror=e=>{note.textContent=`錄製發生錯誤：${e.error?.message||'未知錯誤'}`;};
+  closePanel();await nextFrame();videoRecorder.start(1000);document.title='● 錄製中｜Lumen';setVideoButtons(true);renderRecordFrame();note.textContent=`錄製中：${recordCanvas.width}×${recordCanvas.height}。按 V 停止並儲存。`;
+ }catch(error){recordCanvasStream?.getTracks().forEach(track=>track.stop());recordCanvasStream=null;videoRecorder=null;openPanel();note.textContent=error?.message||'錄製啟動失敗。';}
+}
+async function stopVideoRecording(){if(!videoRecorder||videoRecorder.state!=='recording')return;const note=document.getElementById('captureNote'),recorder=videoRecorder;cancelAnimationFrame(recordFrame);const finished=new Promise(resolve=>recorder.addEventListener('stop',resolve,{once:true}));recorder.stop();await finished;recordCanvasStream?.getTracks().forEach(track=>track.stop());recordCanvasStream=null;videoRecorder=null;document.title='Lumen｜雅婷與媽媽';setVideoButtons(false);
+ const ext=recordMime.startsWith('video/mp4')?'mp4':'webm',blob=new Blob(recordChunks,{type:recordMime}),filename=`Lumen-${activeScene}-${recordCanvas.width}x${recordCanvas.height}-${new Date().toISOString().replace(/[:.]/g,'-')}.${ext}`;
+ try{if(!blob.size)throw new Error('影片檔案為空，請重試。');const file=await screenshotFolder.getFileHandle(filename,{create:true});const writer=await file.createWritable();await writer.write(blob);await writer.close();note.textContent=`已存到下載／後置畫面：${filename}`;}catch(error){const fallback=URL.createObjectURL(blob),link=document.createElement('a');link.href=fallback;link.download=filename;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(fallback),60000);openPanel();note.textContent='資料夾寫入失敗，影片已改存瀏覽器下載。';}
+}
+document.getElementById('startVideoBtn').onclick=startVideoRecording;document.getElementById('stopVideoBtn').onclick=stopVideoRecording;
+
+window.addEventListener('pagehide',()=>{screenshotStream?.getTracks().forEach(track=>track.stop());});
+window.addEventListener('resize',fitStage);
+const off=document.getElementById('screenOff');document.getElementById('offBtn').onclick=()=>{off.classList.toggle('active');closePanel();};document.getElementById('backBtn').onclick=()=>off.classList.add('active');off.onclick=()=>off.classList.remove('active');
+// Extra controls remain ordinary, local actions for filming.
+document.getElementById('moreBtn').onclick=()=>{if(confirm('要關閉手機畫面嗎？'))off.classList.add('active');};
+document.getElementById('plusBtn').onclick=()=>input.focus();
+document.addEventListener('keydown',e=>{if(e.key==='Tab'&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!controlPanel.classList.contains('open')){e.preventDefault();openPanel();return;}if(e.key==='Escape'){closePanel();off.classList.remove('active');if(callScreen.classList.contains('active'))closeCall();return;}if(e.target.matches('textarea,input,select'))return;if(e.key.toLowerCase()==='r')recording();if(e.key.toLowerCase()==='v'){if(videoRecorder?.state==='recording')stopVideoRecording();else startVideoRecording();return;}if(e.key.toLowerCase()==='b'){off.classList.toggle('active');closePanel();return;}const n=Number(e.key);if(n>=1&&n<=5)loadScene(Object.keys(scenes)[n-1]);});
+let drag=null,suppressClick=false;
+aiCard.addEventListener('pointerdown',e=>{if(e.button!==0)return;drag={y:e.clientY,id:e.pointerId};suppressClick=false;});
+aiCard.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const dy=Math.min(0,e.clientY-drag.y);if(dy<-6){aiCard.setPointerCapture(e.pointerId);aiCard.classList.add('dragging');suppressClick=true;aiCard.style.transform=`translateY(${dy}px)`;aiCard.style.opacity=Math.max(.15,1+dy/180);}});
+function endDrag(e){if(!drag)return;const dismiss=e.type!=='pointercancel'&&e.clientY-drag.y<-48;drag=null;aiCard.classList.remove('dragging');aiCard.style.transform='';aiCard.style.opacity='';if(dismiss)hideAI();}
+aiCard.addEventListener('pointerup',endDrag);aiCard.addEventListener('pointercancel',endDrag);
+aiCard.addEventListener('click',e=>{if(suppressClick){e.stopImmediatePropagation();e.preventDefault();suppressClick=false;}},true);
+const params=new URLSearchParams(location.search);const initialScene=Object.hasOwn(scenes,params.get('scene'))?params.get('scene'):'first';sceneAppearance[initialScene]={...sceneAppearance[initialScene],layout:params.get('layout')==='right'?'right':'center',bg:['dark','office','living','neutral','day-office','night-office'].includes(params.get('bg'))?params.get('bg'):sceneAppearance[initialScene].bg};setMode(params.get('record')==='landscape'?'landscape':'portrait',sceneAppearance[initialScene].layout,sceneAppearance[initialScene].bg,['landscape','portrait','1'].includes(params.get('record')));loadScene(initialScene);
+</script></body></html>
+
+
+
+
