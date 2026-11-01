@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 居家照護助理｜開場</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;color:#343e43;background:#24292c;font-synthesis:none}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button,input{font:inherit}button{cursor:pointer}
+.workspace{width:100vw;height:100vh;display:grid;place-items:center;background:#24292c;overflow:hidden}.stage{position:relative;width:1920px;height:1080px;flex:none;transform:scale(var(--stage-scale,1));background:radial-gradient(circle at 55% 45%,#c5c9c6,#aab4b3 58%,#8d9a9c);overflow:hidden}.stage:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#d9d6cd60,#5f727522)}
+.shell{position:absolute;left:var(--phone-x,50%);top:50%;width:414px;height:868px;padding:12px;transform:translate(-50%,-50%) scale(1.1);transform-origin:center;background:linear-gradient(135deg,#606b70,#20272b 35%,#525e63);border:1px solid #6f797d;border-radius:48px;box-shadow:0 26px 68px #1d272b55,0 0 0 2px #222b2f inset}
+.shell:before{content:"";position:absolute;top:16px;left:50%;width:78px;height:16px;transform:translateX(-50%);border-radius:12px;background:#22282b;z-index:20}
+.phone{position:relative;width:390px;height:844px;overflow:hidden;border-radius:35px;background:#f3f0e9}.status{height:42px;display:flex;align-items:center;justify-content:space-between;padding:4px 24px 0;color:#4d5a5f;font-size:13px;font-weight:650;letter-spacing:.02em}.status-icons{display:flex;gap:5px;align-items:center}.signal{display:flex;align-items:end;gap:2px;height:12px}.signal i{display:block;width:3px;background:#56636a;border-radius:2px}.signal i:nth-child(1){height:4px}.signal i:nth-child(2){height:7px}.signal i:nth-child(3){height:10px}.signal i:nth-child(4){height:12px}.battery{display:block;width:21px;height:10px;border:1.5px solid #56636a;border-radius:3px;position:relative}.battery:before{content:"";position:absolute;left:2px;top:2px;width:14px;height:4px;border-radius:1px;background:#56636a}.battery:after{content:"";position:absolute;right:-4px;top:2px;width:2px;height:4px;background:#56636a;border-radius:0 2px 2px 0}
+.screen{position:absolute;inset:42px 0 0;padding:30px 28px 34px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease,visibility .25s}.screen.active{opacity:1;visibility:visible;transform:translateY(0)}.kicker{font-size:13px;color:#77878c;letter-spacing:.12em;font-weight:650}.title{font-size:30px;line-height:1.24;font-weight:700;letter-spacing:-.035em;margin:18px 0 0;color:#37464b}.lead{font-size:20px;line-height:1.5;color:#47585e;margin:22px 0 0;font-weight:500}.muted{color:#7d8b90;font-size:14px;line-height:1.75}.spacer{flex:1}.primary{height:54px;flex:none;width:100%;border:0;border-radius:17px;background:#7d8b93;color:#fff;font-size:16px;font-weight:650;box-shadow:0 8px 20px #59666b28;transition:transform .16s ease,background .16s ease}.primary:active{transform:scale(.97);background:#6f7e87}.secondary-note{text-align:center;font-size:12px;color:#a3aaa8;margin:15px 0 0}
+.hero-art{margin-top:39px;height:271px;border-radius:28px;background:linear-gradient(145deg,#e9e7df,#d9e1df);position:relative;overflow:hidden;box-shadow:0 13px 28px #53636a12}.hero-art:before{content:"";position:absolute;width:235px;height:235px;border-radius:50%;background:#f3f3eec9;right:-44px;top:-70px}.home-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);width:146px;height:146px;border-radius:34px;background:#f8f8f4;box-shadow:0 14px 30px #687c7d22;display:grid;place-items:center}.home-mark svg{width:78px;height:78px;stroke:#82999e;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.art-caption{position:absolute;bottom:23px;left:0;right:0;text-align:center;color:#64777b;font-size:13px;letter-spacing:.08em}.intro-features{margin:31px 0 0;font-size:13px;line-height:1.85;color:#75858a}
+.feature-intro{font-size:16px;color:#7a898c;line-height:1.55;margin:15px 0 27px}.feature-list{display:grid;gap:12px}.feature-row{display:flex;align-items:center;gap:15px;min-height:70px;border-radius:18px;padding:14px 16px;background:#faf9f5;box-shadow:0 4px 18px #4b5a6010;color:#4c5a5e;font-size:15px;font-weight:550}.feature-check{width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;background:#e3ebe8;color:#718e91;font-size:17px;font-weight:700}.feature-footer{color:#8d9b9b;text-align:center;font-size:12px;line-height:1.6;margin:0 12px 25px}
+.form-label{display:block;font-size:13px;color:#79868a;font-weight:650;margin-bottom:10px}.person-card{border-radius:17px;background:#faf9f5;padding:19px 20px;box-shadow:0 4px 18px #4b5a6010;font-size:18px;font-weight:620;color:#435156}.field-group{margin-top:30px}.name-field{height:64px;width:100%;border-radius:17px;border:1.5px solid #aabbbd;background:#fffefa;padding:0 19px;color:#3f5358;font-size:22px;font-weight:600;outline:none;box-shadow:0 4px 18px #4b5a6012}.name-field:focus{border-color:#829ca2;box-shadow:0 0 0 3px #a7bdbe36}.field-help{font-size:13px;line-height:1.6;color:#91a0a1;margin:12px 2px}.form-top{margin-top:35px}.form-art{height:150px;display:grid;place-items:center;margin-top:46px}.form-art svg{width:98px;height:98px;stroke:#a2b8b6;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.done-icon{width:76px;height:76px;border-radius:50%;background:#e4edeb;color:#6f9291;display:grid;place-items:center;margin:83px auto 28px}.done-icon svg{width:39px;height:39px;stroke:currentColor;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.done-title{text-align:center;margin:0;font-size:30px;color:#3d5155}.done-card{margin-top:56px;padding:29px 20px 34px;border-radius:24px;background:#fbfaf6;text-align:center;box-shadow:0 8px 28px #52636a13}.done-card p{margin:0;color:#899b9d;font-size:15px}.assistant-name{margin-top:17px;font-size:39px;letter-spacing:.05em;font-weight:700;color:#536d72}.done-card:after{content:"";display:block;width:36px;height:2px;background:#b6c9c8;border-radius:2px;margin:24px auto 0}
+.finish-overlay{position:absolute;inset:0;background:#eef2ed;z-index:30;display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s}.finish-overlay.visible{opacity:1;visibility:visible}.finish-message{text-align:center;color:#526c70;font-size:22px;font-weight:650;line-height:1.5}.finish-message .tick{display:block;width:58px;height:58px;line-height:58px;border-radius:50%;background:#dbe9e5;margin:0 auto 19px;font-size:30px}.blackout{position:absolute;inset:0;background:#080a0b;z-index:40;opacity:0;pointer-events:none;transition:opacity .42s ease}.blackout.visible{opacity:1;pointer-events:auto}
+.dev-panel{position:fixed;right:22px;top:22px;z-index:100;background:#f7f7f4f2;border:1px solid #d4dcd9;border-radius:17px;padding:13px;box-shadow:0 10px 32px #0002;display:flex;gap:7px;align-items:center}.dev-panel span{font-size:12px;color:#627074;margin-right:6px}.dev-panel button{border:0;background:#e4eae7;color:#405458;border-radius:10px;padding:8px 10px;font-size:12px}.dev-panel button.active{background:#7d8b93;color:white}.dev-panel button:active{transform:scale(.97)}
+body.record-portrait .workspace{background:#f3f0e9}body.record-portrait .stage{width:390px;height:844px;transform:scale(var(--portrait-scale,1));background:transparent}body.record-portrait .stage:before{display:none}body.record-portrait .shell{left:0;top:0;width:390px;height:844px;padding:0;transform:none;background:transparent;border:0;border-radius:0;box-shadow:none}body.record-portrait .shell:before{display:none}body.record-portrait .phone{border-radius:0}body.record-portrait .dev-panel,body.record-landscape .dev-panel{display:none}
+@media(max-width:700px){.dev-panel{display:none}.workspace{background:#f3f0e9}.stage{width:390px;height:844px;transform:scale(var(--portrait-scale,1));background:transparent}.stage:before{display:none}.shell{left:0;top:0;width:390px;height:844px;padding:0;transform:none;background:transparent;border:0;border-radius:0;box-shadow:none}.shell:before{display:none}.phone{border-radius:0}}
+</style>
+</head>
+<body>
+<div class="workspace"><main class="stage" id="stage"><div class="shell"><div class="phone" id="phone">
+  <div class="status" aria-hidden="true"><span>09:41</span><span class="status-icons"><span class="signal"><i></i><i></i><i></i><i></i></span><span class="battery"></span></span></div>
+  <section class="screen" data-step="1" aria-label="推薦頁">
+    <div class="kicker">為您推薦</div><h1 class="title">AI 居家照護助理</h1>
+    <div class="hero-art" aria-hidden="true"><div class="home-mark"><svg viewBox="0 0 80 80"><path d="M12 35 40 12l28 23v31H12z"/><path d="M32 66V46h16v20"/><path d="M31 33c0-6 8-8 10-2 2-6 10-4 10 2 0 6-10 12-10 12S31 39 31 33Z"/></svg></div><div class="art-caption">日常照護，安心相伴</div></div>
+    <p class="lead">幫你記得那些容易忘記的小事。</p><p class="intro-features">用藥提醒・生活紀錄・健康監測<br>家屬同步查看照護報告</p>
+    <div class="spacer"></div><button class="primary" type="button" data-next="2">了解更多</button>
+  </section>
+  <section class="screen" data-step="2" aria-label="功能介紹">
+    <div class="kicker">日常照護</div><h1 class="title">AI 居家照護助理</h1><p class="feature-intro">陪伴長輩的日常生活</p>
+    <div class="feature-list"><div class="feature-row"><span class="feature-check">✓</span>用藥與回診提醒</div><div class="feature-row"><span class="feature-check">✓</span>飲食與生活紀錄</div><div class="feature-row"><span class="feature-check">✓</span>異常狀況通知</div><div class="feature-row"><span class="feature-check">✓</span>家屬每日照護報告</div></div>
+    <div class="spacer"></div><p class="feature-footer">重要的日常，讓每個人都能安心掌握。</p><button class="primary" type="button" data-next="3">立即啟用</button>
+  </section>
+  <section class="screen" data-step="3" aria-label="設定 AI 助理">
+    <div class="kicker">個人化設定</div><h1 class="title">設定你的 AI 助理</h1>
+    <div class="form-top"><label class="form-label">使用者</label><div class="person-card">林淑芬</div></div>
+    <div class="field-group"><label class="form-label" for="assistantInput">助理名稱</label><input class="name-field" id="assistantInput" type="text" value="豆花" maxlength="16" autocomplete="off" spellcheck="false" aria-label="助理名稱"><p class="field-help">這個名字由你決定，之後也可以更改。</p></div>
+    <div class="form-art" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M17 46 50 18l33 28v36H17z"/><path d="M40 82V55h20v27"/><path d="M37 43c0-8 11-10 13-2 3-8 14-6 14 2 0 8-14 17-14 17S37 51 37 43Z"/></svg></div>
+    <div class="spacer"></div><button class="primary" type="button" data-next="4">完成設定</button>
+  </section>
+  <section class="screen" data-step="4" aria-label="設定完成">
+    <div class="done-icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="m9 20 8 8L32 12"/></svg></div><h1 class="done-title">設定完成</h1>
+    <div class="done-card"><p>林淑芬的照護助理</p><div class="assistant-name" id="completedName">豆花</div></div>
+    <div class="spacer"></div><button class="primary" type="button" id="startCare">開始照護</button><p class="secondary-note">準備好陪伴每一天</p>
+  </section>
+  <div class="finish-overlay" id="finishOverlay" aria-live="polite"><div class="finish-message"><span class="tick">✓</span><span id="finishText">豆花已開始服務</span></div></div>
+  <div class="blackout" id="blackout" aria-label="開場結束"></div>
+</div></div></main></div>
+<nav class="dev-panel" id="devPanel" aria-label="拍攝場景快捷切換"><span>直接跳到</span><button type="button" data-jump="1">1 推薦</button><button type="button" data-jump="2">2 功能</button><button type="button" data-jump="3">3 命名</button><button type="button" data-jump="4">4 完成</button></nav>
+<script>
+const params=new URLSearchParams(location.search),mode=params.get('record'),stage=document.getElementById('stage'),input=document.getElementById('assistantInput'),overlay=document.getElementById('finishOverlay'),blackout=document.getElementById('blackout');
+if(mode==='portrait'||mode==='landscape')document.body.classList.add('record-'+mode);
+if(params.get('layout')==='right')stage.style.setProperty('--phone-x','72%');
+let step=1,finishTimers=[];
+function fit(){stage.style.setProperty('--stage-scale',Math.min(innerWidth/1920,innerHeight/1080));stage.style.setProperty('--portrait-scale',Math.min(innerWidth/390,innerHeight/844));}fit();addEventListener('resize',fit);
+function clearFinish(){for(const timer of finishTimers)clearTimeout(timer);finishTimers=[];overlay.classList.remove('visible');blackout.classList.remove('visible')}
+function showStep(next){if(next<1||next>4)return;clearFinish();step=next;const name=input.value.trim()||'豆花';document.getElementById('completedName').textContent=name;document.getElementById('finishText').textContent=name+'已開始服務';document.querySelectorAll('.screen').forEach(el=>{const active=Number(el.dataset.step)===next;el.classList.toggle('active',active);el.inert=!active;el.setAttribute('aria-hidden',String(!active))});document.querySelectorAll('[data-jump]').forEach(el=>el.classList.toggle('active',Number(el.dataset.jump)===next));}
+document.querySelectorAll('[data-next]').forEach(button=>button.addEventListener('click',()=>{if(step===3&&!input.value.trim()){input.focus();return}showStep(Number(button.dataset.next))}));
+document.querySelectorAll('[data-jump]').forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.jump))));
+document.getElementById('startCare').addEventListener('click',()=>{const name=input.value.trim()||'豆花';document.getElementById('finishText').textContent=name+'已開始服務';overlay.classList.add('visible');finishTimers.push(setTimeout(()=>blackout.classList.add('visible'),560));});
+addEventListener('keydown',event=>{if(event.target===input){if(event.key==='Enter'){event.preventDefault();document.querySelector('[data-step="3"] [data-next]').click()}return}if(/^[1-4]$/.test(event.key)){showStep(Number(event.key))}if(event.key==='Escape'&&blackout.classList.contains('visible'))showStep(1)});
+showStep(Math.min(4,Math.max(1,Number(params.get('step'))||1)));
+</script>
+</body>
+</html>
+
